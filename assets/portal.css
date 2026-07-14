@@ -1,0 +1,131 @@
+/* MPVK Portal — mobile-first. Parchment/ink/gold brand. */
+:root{
+  --parchment:#F0E7D3; --ink:#1F2E40; --gold:#B9922F; --teal:#2C5F63; --bronze:#6E4E30; --card:#FFFCF3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--parchment);color:var(--ink);
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased; padding-bottom:env(safe-area-inset-bottom);}
+#mpvk-app{max-width:760px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+
+.mpvk-top{position:sticky;top:0;z-index:5;background:var(--ink);color:var(--parchment);
+  padding:.8rem 1rem calc(.8rem);display:flex;align-items:center;justify-content:space-between}
+.mpvk-top .who{font-weight:600;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mpvk-top a{color:var(--gold);text-decoration:none;font-size:.85rem}
+.mpvk-top .top-actions{display:flex;align-items:center;gap:.7rem;flex:0 0 auto}
+.mpvk-top .bell{background:none;border:none;font-size:1.1rem;cursor:pointer;padding:0;line-height:1}
+
+.mpvk-main{flex:1;padding:1rem 1rem 5.5rem}
+
+.mpvk-tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:var(--ink);
+  display:flex;justify-content:space-around;padding:.35rem 0 calc(.35rem + env(safe-area-inset-bottom))}
+.mpvk-tabs button{background:none;border:none;color:var(--parchment);opacity:.65;font-size:.78rem;
+  display:flex;flex-direction:column;align-items:center;gap:2px;padding:.3rem .9rem;cursor:pointer}
+.mpvk-tabs button .ic{font-size:1.25rem;line-height:1}
+.mpvk-tabs button.on{opacity:1;color:var(--gold)}
+.mpvk-badge{position:absolute;transform:translate(14px,-4px);background:#c0392b;color:#fff;border-radius:999px;
+  font-size:.62rem;min-width:16px;height:16px;line-height:16px;text-align:center;padding:0 3px}
+
+.card{background:var(--card);border:1px solid var(--bronze);border-radius:12px;padding:1rem;margin:0 0 .9rem}
+.card h2{margin:.1rem 0 .6rem;font-size:1.05rem}
+.muted{color:var(--bronze);font-size:.85rem}
+.pill{display:inline-block;border-radius:999px;padding:.1rem .6rem;font-size:.72rem;font-weight:600}
+.pill.planned{background:#e7e0cf;color:var(--ink)}
+.pill.completed{background:#2C5F63;color:#fff}
+.pill.missed{background:#c0392b;color:#fff}
+.pill.partial{background:var(--gold);color:var(--ink)}
+
+button.btn{background:var(--gold);color:var(--ink);border:none;border-radius:999px;
+  padding:.65rem 1.2rem;font-weight:700;font-size:.95rem;cursor:pointer;touch-action:manipulation}
+button.btn.sec{background:transparent;border:1.5px solid var(--bronze);color:var(--bronze)}
+button.btn:disabled{opacity:.5}
+button.btn.small{padding:.35rem .8rem;font-size:.8rem}
+
+/* Calendar */
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.cal-head b{font-size:1rem}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-grid .dow{text-align:center;font-size:.68rem;color:var(--bronze);padding:.15rem 0}
+.cal-day{min-height:52px;background:var(--card);border:1px solid #d8cdb4;border-radius:8px;
+  padding:3px 4px;font-size:.72rem;cursor:pointer;position:relative}
+.cal-day.off{opacity:.35}
+.cal-day.today{border-color:var(--gold);border-width:2px}
+.cal-day .dots{display:flex;gap:2px;flex-wrap:wrap;margin-top:2px}
+.cal-day .dot{width:8px;height:8px;border-radius:50%}
+.dot.planned{background:var(--bronze)} .dot.completed{background:var(--teal)} .dot.missed{background:#c0392b} .dot.partial{background:var(--gold)}
+.day-list .w{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0;border-bottom:1px solid #e5dcc6;cursor:pointer}
+
+/* Workout detail */
+.ex{border-top:1px solid #e5dcc6;padding:.7rem 0}
+.ex b{display:block}
+.ex .rx{font-size:.82rem;color:var(--teal);margin:.15rem 0}
+.ex .cues{font-size:.8rem;color:var(--bronze)}
+
+/* Workout checklist (MVP) */
+.progress{margin-top:.5rem;font-weight:700;color:var(--teal)}
+.exrow{display:flex;gap:.7rem;align-items:flex-start;padding:.85rem .2rem;border-top:1px solid #e5dcc6}
+.exrow:first-of-type{border-top:none}
+.exrow .check{flex:0 0 30px;width:30px;height:30px;border-radius:8px;border:2px solid var(--bronze);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;background:#fff;transition:.12s;margin-top:1px}
+.exrow .check.on{background:var(--teal);border-color:var(--teal)}
+.exrow .exhead{font-weight:600;font-size:1rem;line-height:1.35}
+.exrow .exextra{font-size:.82rem;color:var(--teal);margin-top:.1rem}
+.exrow.done .exhead{text-decoration:line-through;opacity:.55}
+.exrow:active{background:#f3ecd9}
+
+/* Messages — iMessage-style */
+.msgs{display:flex;flex-direction:column;gap:.25rem;margin-bottom:.5rem;padding-bottom:.5rem}
+.msgwrap{display:flex;flex-direction:column;max-width:84%}
+.msgwrap.me{align-self:flex-end;align-items:flex-end}
+.msgwrap.them{align-self:flex-start;align-items:flex-start}
+.msg{padding:.5rem .75rem;border-radius:18px;font-size:.95rem;word-wrap:break-word;cursor:pointer;position:relative}
+.msg.me{background:var(--teal);color:#fff;border-bottom-right-radius:5px}
+.msg.them{background:var(--card);border:1px solid #d8cdb4;border-bottom-left-radius:5px}
+.msg .body{white-space:pre-wrap}
+.msg .t{display:block;font-size:.62rem;opacity:.65;margin-top:2px}
+.msg .quote{border-left:3px solid rgba(255,255,255,.5);padding:.15rem .5rem;margin:0 0 .35rem;font-size:.8rem;opacity:.85;
+  background:rgba(0,0,0,.08);border-radius:6px;max-height:3em;overflow:hidden}
+.msg.them .quote{border-left-color:var(--bronze)}
+.msg .att{max-width:220px;max-height:280px;border-radius:12px;display:block;margin:.1rem 0}
+.rxrow{display:flex;gap:4px;margin:2px 2px 0;flex-wrap:wrap}
+.rxchip{background:var(--card);border:1px solid #d8cdb4;border-radius:999px;font-size:.72rem;padding:1px 7px;cursor:pointer;line-height:1.5}
+.rxchip.mine{background:var(--gold);border-color:var(--gold)}
+
+/* action sheet (tap a bubble) */
+.sheet{position:fixed;inset:0;background:rgba(31,46,64,.35);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.sheet-in{background:var(--parchment);width:100%;max-width:520px;border-radius:16px 16px 0 0;padding:1rem 1rem calc(1rem + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(0,0,0,.2)}
+.sheet-rx{display:flex;justify-content:space-around;margin-bottom:.6rem}
+.sheet-emo{font-size:1.6rem;background:none;border:none;cursor:pointer;padding:.25rem}
+.sheet-act{display:block;width:100%;text-align:center;background:var(--card);border:1px solid var(--bronze);border-radius:12px;padding:.7rem;margin-top:.5rem;font-size:1rem;cursor:pointer;color:var(--ink)}
+.sheet-act.cancel{background:transparent;color:var(--bronze)}
+
+/* composer with reply bar + attach */
+.composer-wrap{position:fixed;bottom:calc(3.4rem + env(safe-area-inset-bottom));left:0;right:0;background:var(--parchment);max-width:760px;margin:0 auto}
+.replybar{align-items:center;gap:.5rem;padding:.4rem 1rem 0;font-size:.82rem;color:var(--bronze)}
+.replybar .rtext{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.replybar .rx{background:none;border:none;color:var(--bronze);font-size:1rem;cursor:pointer}
+.composer{padding:.5rem 1rem;display:flex;gap:.5rem;align-items:flex-end}
+.composer textarea{flex:1;resize:none;border:1px solid var(--bronze);border-radius:18px;padding:.55rem .8rem;font-size:16px;min-height:42px;max-height:120px;background:#fff}
+.attbtn{flex:0 0 40px;width:40px;height:42px;border-radius:50%;border:1.5px solid var(--bronze);background:var(--card);font-size:1.3rem;line-height:1;cursor:pointer;color:var(--bronze)}
+
+/* Client switcher (coach) */
+.switcher{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:.6rem;-webkit-overflow-scrolling:touch}
+.switcher button{white-space:nowrap;background:var(--card);border:1.5px solid var(--bronze);color:var(--ink);
+  border-radius:999px;padding:.35rem .9rem;font-size:.85rem;cursor:pointer}
+.switcher button.on{background:var(--gold);border-color:var(--gold);font-weight:700}
+
+/* typing indicator — three pulsing dots in a "them" bubble */
+.msg.typing{display:flex;gap:4px;align-items:center;padding:.7rem .9rem;min-width:52px}
+.tdot{width:7px;height:7px;border-radius:50%;background:var(--bronze);opacity:.4;animation:tdot 1.2s infinite}
+.tdot:nth-child(2){animation-delay:.2s}
+.tdot:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+/* toast — bottom notice for push status / errors */
+.toast{position:fixed;left:50%;bottom:calc(4.6rem + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(12px);
+  background:var(--ink);color:var(--parchment);border-radius:12px;padding:.7rem 1rem;font-size:.88rem;line-height:1.4;
+  max-width:min(92vw,420px);box-shadow:0 4px 18px rgba(0,0,0,.3);z-index:40;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.spin{text-align:center;color:var(--bronze);padding:2rem 0}
+@media(min-width:600px){ .mpvk-main{padding-top:1.4rem} .cal-day{min-height:72px} }
